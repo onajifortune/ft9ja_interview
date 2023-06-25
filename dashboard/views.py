@@ -21,10 +21,15 @@ def index(request:HttpRequest):
             new_labels.append(i.get('current_time').strftime('%H:%M:%S'))
     except:
         pass
+    if len(new_data) > 30:
+        diff = len(new_data) - 30
+        new_data = new_data[diff:]
+        new_labels = new_labels[diff:]
     data = [1,2,3,4,5]
     labels = [calendar.month_name[i] for i in range(1, 8)]
 
     data = new_data
     labels = new_labels
+    print(len(data))
     
     return render(request, 'index2.html', {'data':data, 'labels':labels})
