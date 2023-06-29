@@ -30,6 +30,5 @@ def index(request:HttpRequest):
 
     data = new_data
     labels = new_labels
-    print(len(data))
     
     return render(request, 'index2.html', {'data':data, 'labels':labels})
